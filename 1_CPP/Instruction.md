@@ -25,6 +25,7 @@ After user inputting (through `std::cin`) a string, you need to find the __FIRST
 * White spaces are __ALLOWED__ in inputs.
 * Symbols __OTHER THAN__ __{Numbers(0-9), Letters(a-z,A-Z), White Spaces(Tab, Space)}__ __WILL NOT__ appear in inputs.
 * Please assume the input size will be __NO MORE THAN__ 16 (White space included).
+* __YOU ARE NOT ALLOWED TO USE THE string class__, i.e `std::string`.
 
 For example, if I input the string `ababaabbaaa`, your output should be `a`.
 
@@ -153,9 +154,19 @@ For this assignment, together with the assignment of "Git and Github" module, yo
 ## Grading
 
 1. You can submit your work on Github: 15%
-2. Your code compiles: 35%
+2. Your code compiles: 15%
 3. Your code passed k tests out of N test cases: k/N * 50%
 4. The dificulty level of your task, given the fact that it compiles: (difficulty_level - 1) * 15%
-5. Has a Makefile that can build your code, and has `all` and `clean` target in it: 10%
+5. Follow the coding style and convention specified in [Coding convention](#coding-convention): 20%
+6. __[BONUS]__ Has a Makefile that can build your code, and has `all` and `clean`(can clean up object files) target in it: 10%
 
-> Note: Your score can be above 100%, Max = 15 + 35 + 50 + (3 - 1) * 15 + 10 = 140%
+> Note: Your score can be above 100%, Max = 15 + 15 + 50 + (3 - 1) * 15 + 20 + 10 = 140%
+
+### Coding convention:
+* lowerCamelCase for variables(Non-const), arguments, and function names.
+* UpperCamelCase for Class, Enumeration(Type name), Struct, file names.
+* UPPER_SNAKE_CASE for constants.
+* __Do not use__ lower_snake_case.
+* Set reasonable and intuitive names.
+* Avoid magic numbers, use constants instead.
+* __Do not use__ `#define` for constants, use `constexpr` instead.
