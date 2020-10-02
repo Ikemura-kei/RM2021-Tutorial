@@ -28,7 +28,7 @@ Let's say you need to use codes from another person’s forked repo,
 Suppose you want to checkout to another branch, but you have some incomplete work in your working directory, and you don’t want to make a new commit to commit those. Then how would you save your work temporary before checkout? (If you have some uncommited work in your current local branch, git will not allow you to checkout other branchs).  
 
 ### Q4
-If you want to go back three commits which have been pushed, what is/are the commands to achieve that? (Go back one commit means go to the latest commit which has been pushed, so go back three commits means go to the third latest commit that was pushed to remote).
+If you want to go back to the third commits before the last commit which have been pushed, what is/are the commands to achieve that? (Go back to the first commit before the last commit which have been pushed means going to the last commit).
 
 
 
