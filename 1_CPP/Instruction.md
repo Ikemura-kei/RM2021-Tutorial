@@ -147,7 +147,7 @@ For this assignment, together with the assignment of "Git and Github" module, yo
 1. Follow [This tutorial](https://kbroman.org/github_tutorial/pages/init.html) to create your repository, note that it should be __PRIVATE__ instead of public.
 2. Create a directory/folder with name `CPP` to store your work of this assignment.
 3. Push your work to the remote.
-4. Set [] as collaborator by following [This tutorial](https://help.github.jp/enterprise/2.11/user/articles/inviting-collaborators-to-a-personal-repository/).
+4. Set our senior Will,(Username is `wlph17`) as collaborator by following [This tutorial](https://help.github.jp/enterprise/2.11/user/articles/inviting-collaborators-to-a-personal-repository/).
 5. You can feel free to push as many times as you want when you make changes.
 
 ## Grading
