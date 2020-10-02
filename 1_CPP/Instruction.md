@@ -1,8 +1,14 @@
 # Instruction for C++ tutorial module assignment
 
-For this assignment, you need to choose __ONE__ programming task from the tasks listed [Tasks](#tasks). To submit your work, please refer to [Submission](#submission).
+* For this assignment, you need to choose __ONE__ programming task from the tasks listed [Tasks](#tasks). 
+* To submit your work, please refer to [Submission](#submission). 
+* For grading scheme, please refer to [Grading](#grading).
 
 > Note: If you have the capability, we recommend you to choose the higher difficulty task instead of the lower ones. (If you have programming background, all tasks should be fairly simple to you)
+
+> Note: For each task, we provided example input and output for you to automate your debug process, feel free to use them. (Hint: use file IO to read the corresponding files and store input and output in different variables. Use the inputs as the input to your program and compare your output with the example outputs inside your program and notify you if passed or not).
+
+Suppose your file name is `MyWork.cpp` and you want your executable be named as `MyExecutable.exe`, then to build your code, use the command: `g++ MyWork.cpp -o MyExecutable`. And you can run your program by typing `./MyExecutable` in your terminal.
 
 ## Tasks
 
@@ -43,6 +49,10 @@ INPUT: a   b
 OUTPUT:  // A space
 ```
 
+In the directory `./Task1`, we provided example inputs and outputs for you to debug, the file name is `SampleInputAndOutput.txt`, you can read this file in your program. Please feel free to use depending on your needs.
+
+> Note: The first column is inputs and the second column is the corresponding outputs, columns are separated by semi-colon.
+
 ### Q2: Column Swapper
 * Difficulty Level: 1
 * Input to your program: Two numbers indicating columns to swap.
@@ -81,12 +91,20 @@ Invalid input, please input again!
 Please input the columns to swap, separate your numbers with space (e.g. 1 2):
 ```
 
+Similarily, we also provided example inputs and outputs in `./Task2`, file `ExampleInput.txt` and `ExampleOutput.txt`. Feel free to use them to automate your debug process.
+
+> Note: In the example provided, __column1__ and __column3__ are swapped.
+
 ### Q3: How Long Have I Lived?
 * Difficulty Level: 3
 * Input to your program: Two strings of numbers, indicating birthday and current day respectively.
 * Output of your program: Number of days that this person have lived.
 
-You need to calculated how many days have this person lived. Note that you need to take leep year into account.
+You need to calculated how many days have this person lived. Note that you need to take leap year into account, by following the rule below:
+```c++
+if ((YYYY % 4 == 0 && YYYY % 100 != 0) || YYYY % 400 == 0)
+    isLeapYear = true;
+```
 
 * Both the day of birth and current day __COUNT__ as days this person have lived (unless these two are the same day, in that case only count as __ONE__ day).
 * The format of input is in YYYYMMDD, for example 20201001 (2020, Oct. 1st).
@@ -119,6 +137,10 @@ The number of days this person have lived:
 2
 ```
 
+We also provide sample inputs and outputs for this one, refer to `./Task3/ExampleInputsOutputs.txt`. Consider using it to automate your debuf process. 
+
+> Note: The first column is birthday, the second column is current day, and the last one is the output number of days. Columns are separated by semi-colons.
+
 ## Submission
 
 For this assignment, together with the assignment of "Git and Github" module, you need to create your own __PRIVATE__ Github repository and submit your work there, the detailed steps are as follows:
@@ -128,3 +150,12 @@ For this assignment, together with the assignment of "Git and Github" module, yo
 4. Set [] as collaborator by following [This tutorial](https://help.github.jp/enterprise/2.11/user/articles/inviting-collaborators-to-a-personal-repository/).
 5. You can feel free to push as many times as you want when you make changes.
 
+## Grading
+
+1. You can submit your work on Github: 15%
+2. Your code compiles: 35%
+3. Your code passed k tests out of N test cases: k/N * 50%
+4. The dificulty level of your task, given the fact that it compiles: (difficulty_level - 1) * 15%
+5. Has a Makefile that can build your code, and has `all` and `clean` target in it: 10%
+
+> Note: Your score can be above 100%, Max = 15 + 35 + 50 + (3 - 1) * 15 + 10 = 140%
