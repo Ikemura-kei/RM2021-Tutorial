@@ -164,7 +164,7 @@ For this assignment, together with the assignment of "Git and Github" module, yo
 
 ### Coding convention:
 * lowerCamelCase for variables(Non-const), arguments, and function names.
-* UpperCamelCase for Class, Enumeration(Type name), Struct, file names.
+* UpperCamelCase for Class, Enumeration(Type name), Struct, file names, namespace.
 * UPPER_SNAKE_CASE for constants.
 * __Do not use__ lower_snake_case.
 * Set reasonable and intuitive names.
