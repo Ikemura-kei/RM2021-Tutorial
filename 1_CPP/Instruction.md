@@ -153,8 +153,8 @@ For this assignment, together with the assignment of "Git and Github" module, yo
 ## Grading
 
 1. You can submit your work on Github: 15%
-2. Your code compiles: 35%
-3. Your code passed k tests out of N test cases: k/N * 50%
+2. Your code compiles: 15%
+3. Your code passed k tests out of N test cases: k/N * 70%
 4. The dificulty level of your task, given the fact that it compiles: (difficulty_level - 1) * 15%
 5. Has a Makefile that can build your code, and has `all` and `clean` target in it: 10%
 
