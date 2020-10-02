@@ -29,7 +29,7 @@ Suppose you want to checkout to another branch, but you have some incomplete wor
 
 ### Q4
 If you want to go back 3 commits before the latest commit which have been pushed, what is/are the commands to achieve that? (Go back 1 commit before the latest commit means go to the previous commit before the latest).   
-So for this question: ... ---> 3rd_last_commit[**You go to this one**] ---> 2nd_last_commit ---> 1st_last_commit ---> latest_commit
+> So for this question: ... ---> 3rd_last_commit[**You go to this one**] ---> 2nd_last_commit ---> 1st_last_commit ---> latest_commit
 
 
 
