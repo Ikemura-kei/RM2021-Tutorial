@@ -6,7 +6,9 @@
 
 ## General
 
-* If you have the capability, we recommend you to choose the higher difficulty question instead of the lower ones. (If you have programming background, all questions should be fairly simple to you).
+* If you are new to the programming world, you could choose the easier question. We want you to first enjoying coding instead of to be overwhelmed.
+
+* However if you have the capability, we recommend you to choose the higher difficulty question instead of the lower ones. (If you have programming background, all questions should be fairly simple to you).
 * For Question 1 and 2, we provide skeleton codes for you to start with. For Question 3, please do the whole thing yourself.
 
 * For Question 1, we provide a test program that you can run to test your code implementation. For question 2 and 3, we provide you some sample inputs and corresponding outputs, if you want to do tests on your program, please read the sample files into your program by yourself and test.
@@ -15,7 +17,7 @@
 
 ## Questions
 
-> Difficulty Levels: 1, 2, and 3 in the increading order of difficulty.
+> Difficulty Levels: 1, 2, and 3 in the increasing order of difficulty.
 
 ### Q1: Find Maximum Consecutive Character
 * Difficulty Level: 1
@@ -172,7 +174,7 @@ For this assignment, together with the assignment of "Git and Github" module, yo
 
 ### Coding convention:
 * lowerCamelCase for variables(Non-const), arguments, and function names.
-* UpperCamelCase for Class, Enumeration(Type name), Struct, file names, namespace.
+* UpperCamelCase for Class, Enumeration(Type name), Struct, file names.
 * UPPER_SNAKE_CASE for constants.
 * __Do not use__ lower_snake_case.
 * Set reasonable and intuitive names.
