@@ -6,7 +6,7 @@
 
 ## General
 
-* If you are new to the programming world, you could choose the easier question. We want you to first enjoying coding instead of to be overwhelmed.
+* If you are new to the programming world, you could choose the easier question. We want you to first enjoy coding instead of to be overwhelmed.
 
 * However if you have the capability, we recommend you to choose the higher difficulty question instead of the lower ones. (If you have programming background, all questions should be fairly simple to you).
 * For Question 1 and 2, we provide skeleton codes for you to start with. For Question 3, please do the whole thing yourself.
