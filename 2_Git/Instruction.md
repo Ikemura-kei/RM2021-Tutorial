@@ -1,6 +1,8 @@
-Instruction
-===========
-Choose __ONE__ question from the following questions and write a short answer to it. Name your file that contains the qeustion you choose and answer to it as `Answer.txt`.  
+# Instruction for Git and Github module assignment
+* For submission, refer to [Submmision](#submission)
+* We will give you full mark as long as the answer to the question is reasonable.
+
+Choose __ONE__ question from the following questions and write a short answer to it. Name your file that contains the qeustion you choose and the answer to it as `Answer.txt`.  
    
 Example of `Answer.txt`
 -----------------------
@@ -14,8 +16,7 @@ Your answer should be just a few lines.
 ```
 > Note: You MUST indicate which question you choose.
 
-Questions
-========
+## Questions
 
 ### Q1
 Suppose you merged some codes from another branch and merge conflicts occured. Then you want to give up merging and get back to the latest commit, what can you do? List the commands you need in the correct order.
@@ -31,7 +32,13 @@ Suppose you want to checkout to another branch, but you have some incomplete wor
 If you want to go back 3 commits before the latest commit which have been pushed, what is/are the commands to achieve that? (Go back 1 commit before the latest commit means go to the previous commit before the latest).   
 > So for this question: ... ---> 3rd_last_commit[**You go to this one**] ---> 2nd_last_commit ---> 1st_last_commit ---> latest_commit
 
+## Submission
 
+* Follow the instruction of the C++ module assignment to create a __PRIVATE__ repo and add our account as collaborator.
+* Create a directory called `Git_Github` in your repo.
+* Put your `Answer.txt` into that directory.
+* Push your work to the remote.
+* After you submit both this assignment and the one for C++, you should have two directories, `CPP` and `Git_Github` in your repo.
 
 
 
