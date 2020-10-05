@@ -115,7 +115,7 @@ if ((YYYY % 4 == 0 && YYYY % 100 != 0) || YYYY % 400 == 0)
 * The format of input is in YYYYMMDD, for example 20201001 (2020, Oct. 1st).
 * Please assume there __WILL NOT__ be any invalid inputs
 * You can assume that the person is already born, i.e day of birth is earlier than current day.
-* 1000 <= YYYY <= 9999, i.e. year will always start with a 9 >= digit >= 0.
+* 1000 <= YYYY <= 9999, i.e. year will always start with a 9 >= digit > 0.
 * 01 <= MM <= 12 and 01 <= DD <= 31
 
 #### Examples:
