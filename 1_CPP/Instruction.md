@@ -142,7 +142,7 @@ The number of days this person have lived:
 2
 ```
 
-We also provide sample inputs and outputs for this one, refer to `./question3/ExampleInputsOutputs.txt`. Consider using it to automate your debuf process. 
+We also provide sample inputs and outputs for this one, refer to `./question3/ExampleInputsOutputs.txt`. Consider using it to automate your debug process. 
 
 > Note: The first column is birthday, the second column is current day, and the last one is the output number of days. Columns are separated by semi-colons.
 
