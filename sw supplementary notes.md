@@ -144,3 +144,155 @@ typedef struct __attribute__((__packed__))
 ```
 
 And in fact, we can also specify the alignment requirement for our type by the aligned attribute, written like this: `__attribute__ ((aligned (n)))` where `n` is the alignment in bytes. We can combine two attributes like this: `__attribute__((packed, aligned(1)))`.
+
+### Volatile
+
+#### Compiler Optimization
+
+This section explains the common code transforms done by the compiler for optimization, to explain the reason why we need volatile variables.
+
+Consider the following code segment:
+
+```C
+int a, b;
+a = 1;
+b = 2;
+```
+
+It is obvious that we can reorder line 2 and 3 without changing the result. However, consider the following case:
+
+```c
+int a = 0, b = 0;
+a = b + 1;
+b = 1;
+```
+
+Changing line 2 and 3 would obviously have a different result, we call this a dependency. The compiler can construct the dependency graph of the program and reorder/modify it freely *as long as the behavior is not changed*. What we mean by behavior is the result of the program running in a *single thread*. Hence, the compiler can do a lot of low level optimization for us without affecting the result in most of the cases, until when we deal with embedded or multithreading. We would look into two of the most common cases, hardware interaction and interrupt, and discuss about multithreading in general at last.
+
+### Hardware Register (Memory-Mapped IO)
+
+Memory-mapped IO means that a certain physical address range is mapped to the register of the hardware peripherals, writing/reading from a specific address means writing/reading from a specific hardware peripheral register. Registers are usually used for obtaining status information (status register), configuration or giving commands to the hardware. Obviously, writing could introduce side-effect, and the register can be changed even if our code did not modify it. We would look into two common cases, polling and write-after-write as an example where compiler could mis-optimize, and require setting the variable as volatile to tell the compiler not to optimize in that case.
+
+In the first example, we would consider a GPIO device that is reading the *digital input* of a pin, for example to detect is a switch is pressed or not. To keep it simple, we define the value to be 1 when the switch is pressed, and 0 when the switch is not pressed. We define the address of the register to be `0x1234`.
+
+```c
+// this code segment blocks until the switch is pressed
+void foo() {
+    uint8_t *press = (uint8_t*)0x1234;
+    while (*press == 0) {}
+}
+```
+
+Let us reason about the code from the compiler's perspective: You are reading a value from a pointer, and repeat if the value equals to 0, without doing any other things. For *normal* code, the value the pointer is referring *would not change* because you did not change it in the code, so the compiler would happily optimize the code into something like this:
+
+```c
+// correct optimization, incorrect behavior
+uint8_t *press = (uint8_t*)0x1234;
+uint8_t value = *press;
+if (value == 0) {
+    // dead loop here...
+}
+```
+
+Indeed, you can verify this via [compiler explorer](https://godbolt.org/), using gcc with `-O2`:
+
+```asm
+foo():
+        mov     r3, #4608
+        ldrb    r3, [r3, #52]   @ zero_extendqisi2
+        cmp     r3, #0
+        bxne    lr
+.L4:
+        b       .L4
+```
+
+If you do not understand the assembly, it means loading the value the pointer is pointing to into the CPU register r3, exit the function if it does not equal to 0. Otherwise it would stuck in the loop from line 6 to 7, line 7 means going back to itself (without condition).
+
+For most of the cases, this is indeed the correct optimization, based on the assumption that the behavior would not change in normal circumstances. However, this is clearly not what we want, we want to read the value every time. This is *our bug*, we have to tell the compiler not to optimize our read and writes as they are special. In this case, we should use the `volatile` modifier to tell the compiler that the memory is special.
+
+```c
+void foo()
+{
+    volatile uint8_t *press = (uint8_t*)0x1234;
+    while (*press == 0) {}
+}
+```
+
+And the compiler explorer output:
+
+```asm
+foo():
+        mov     r2, #4608
+.L2:
+        ldrb    r3, [r2, #52]   @ zero_extendqisi2
+        cmp     r3, #0
+        beq     .L2
+        bx      lr
+```
+
+Clearly, the compiler respects our instruction, even when you enable O3 optimization.
+
+------
+
+In the second example, we would look at a register called *lock register*, which is used for protecting other important registers. One have to write special sequence to the register in order to unlock write access to a group of registers, preventing a buggy program from accidentally writing invalid values to important registers and potentially brick the board. Similarly, we define the address of the register to be `0x1234`, and the sequence is writing `12` and `34` sequentially to unlock the register. Below is the code to unlock the lock register:
+
+```c
+void unlock() {
+    uint8_t *lock = (uint8_t*)0x1234;
+    *lock = 12;
+    *lock = 34;
+}
+```
+
+Except that it won't work, as we are talking about compiler optimization :) . From the compiler's perspective, overwriting a value previously written means that the previous value is useless, so it would happily rewrite into something like this:
+
+```c
+void unlock_misoptimized() {
+    uint8_t *lock = (uint8_t*)0x1234;
+    *lock = 34;
+}
+```
+
+Assembly output:
+
+```asm
+unlock():
+        mov     r3, #4608
+        mov     r2, #34
+        strb    r2, [r3, #52]
+        bx      lr
+```
+
+This can also be solved by using the `volatile` modifier.
+
+> Aside: Would adding reads in between two writes prevent such optimization? Most likely not, as compilers are able to store the value in register and return the register value for the reads, without writing the register value into the real memory location. Compilers are often smarter than you think.
+
+### Interrupts
+
+Interrupts are procedures (or functions if you like, but they are not common functions) that would be called when CPU receives certain signal, or when specific instruction is executed etc. Please Google for the exact definition if you want to. Long story short, interrupts may run at any time (except when you explicitly blocked them...), and it is run in-between your code. Interrupts can be treated like another thread, running some short functions when certain event happens.
+
+For example, we may setup interrupts when we receive certain messages, increment a counter, and our code would poll for the counter to wait for message arrival. (This is not a good use of interrupt, but good example)
+
+```c
+int counter = 0;
+// say this is our interrupt
+void msg_rcv() {
+    counter++;
+}
+void loop() {
+    while (counter == 0) {}
+    // processing here
+}
+```
+
+Does this look familiar? Yes, you can just think of counter as the hardware register, and clearly there would be mis-optimization here as the compiler does not know that the counter value could change in the loop. The rest is just the same as the previous examples, and is left as exercise.
+
+### Aside: General Multithreaded Environment
+
+> If you don't know what is a thread, I would recommend you skipping this aside.
+
+As we can guess from the above examples, using global variables to share states between multiple threads would likely cause bugs. Adding `volatile` modifier could instruct the compiler to respect our reads/writes, but is that enough in general multithreaded environments?
+
+The answer is no, because of atomicity and memory order. First, memory access has to be atomic to prevent observing some partial updates, like the first half is updated while the second half is not updated. Secondly, the memory ordering has to be correct, as in the relaxed memory model there is no guarantee on the order of the updates between operations, variables updating sequentially can be observed updating in another order in another thread/core, memory barriers are required to enforce the memory ordering. Please refer to C++ memory ordering page for details if you want to learn more. Also, atomic is easy to mess up, so mutexes and other synchronization primitives are recommended instead of using atomics when performance is not that important.
+
+Anyway, volatile is enough for single core case, which is our embedded system. 
