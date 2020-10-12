@@ -8,6 +8,12 @@ We assume you have some basic understanding for C and C++, if not please refer t
 
 There is often a TLDR section after a long section, which summarize what you should know or do, feel free to skip the explanation and just read the TLDR part. This guide includes some *asides*, which are not very useful but good to know. Feel free to ignore the asides and only read them before sleep, so you would fall asleep quicker. We would also provide a list of keywords for you to Google if you cannot understand the content, which is normal as the author is major in CS but not education nor English literature :).
 
+## History
+
+- 5/10/2020: init
+- 9/10/2020: added volatile section
+- 12/10/2020: added memory section
+
 ## Building
 
 > Keywords: ELF symbols, compiler, linker, name mangling, weak symbol.
@@ -50,7 +56,32 @@ Also, we often have to specify the memory layout and what sections to keep in th
 
 ## Types
 
-> Keywords: numerical stability, floating-point processing unit, memory alignment, padding
+> Keywords: memory, pointer, arrays, numerical stability, floating-point processing unit, memory alignment, padding, memory-mapped IO
+
+### Memory
+
+> This section is not useful on its own, but to provide some background knowledge and terminology for later sections.
+
+Data is represented in bits in the computer. 8 bits is called a byte.
+
+Consider the main memory as a giant tape (with starting position), with different data in different position. The address of data is the position of data in the tape, or distance from the start of the tape to the start of the data segment. The unit is in bytes. For example, consider the following memory: (we are writing hexadecimal here)
+
+```
+Addr: | 00 | 01 | 02 | 03 | 04 | ...
+Data: | 12 | 34 | 56 | 78 | 9A | ...
+```
+
+The address of data `12` is 0, that of `9A` is 4. The address of `1234` is 0, the address of `789A` is 03. 
+
+Our data would be stored in the main memory, and we can take the address to a certain variable by this syntax: `&foo`, where `foo` is the name of the variable. In fact we can do this to a field of an object, like `&foo.a`, where `foo` is an instance of a struct/class and `a` is a field of `foo`. The address to data is called a *pointer*, and has type `T*` meaning it is a *pointer to data of type T*. In the machine level representation, a pointer is often an integer with a large enough size to represent all the addresses. This fact would be used below when we talk about memory-mapped IO, which we cast a certain address (integer) into a pointer.
+
+We can also *dereference* the address by the following syntax: `*foo`, where `foo` is a pointer. The result of the dereferencing is of type `T` if the pointer is of type `T*`. Note that a pointer is often just an integer, it is the programmer's responsibility to make sure that the pointer they dereference is a valid one, i.e. correct address, correct type, correct alignment (see later section). One can first take the address to a certain memory, cast (modify) the type of the pointer, and dereference it. This is called *reinterpretation* (reinterpret the memory as a different type), and we have `reinterpretation_cast` in C++, which is pretty dangerous and you are discouraged to use it. 
+
+> As pointers are also data and can be stored in memory, you can take the pointer of a pointer, and so on.
+
+CPU executes instructions, which are commands telling the CPU what to do. In the machine level, we operate on *registers*. Registers are small and fast storages in the CPU, which are used for CPU operations. We have a limited number of registers (often < 100), with the size of a few bytes (4 bytes for our microcontroller, 8 bytes for modern computers). For example, we may have an addition instruction which adds two registers and store them in another register. We may also have a load instruction which loads the data from an address in the main memory, and a store instruction to store the data into an address in the main memory. Registers are not in the main memory, so there is no address for them, the compiler would allocate address and store the data back into memory when needed (out of register space, or when the user dereference a pointer, etc.).
+
+> Main memory is large but slow, register is fast but small, so we would often run out of register space and have to wait for retrieving/sending data to the main memory. To solve this problem, modern computers and some microcontrollers have cache, which is faster than main memory but slower than registers, but a lot larger than registers. This is to provide something like a buffer, to store recently used or would be used data, so CPU can spend its time doing real work instead of waiting for data. We don't have this for our microcontroller so we would not explain it in details here.
 
 ### Integers
 
@@ -69,6 +100,19 @@ The second thing you should note is numerical stability. Operations such as addi
 The last thing we have to consider is whether to use floating point number, and if we should use float or double. For normal applications, the FPU (floating-point processing unit) in our computer is pretty fast and are designed for double precision, so double would not be slower than float but we get higher precision. So, in general we want to use double for normal applications. However, for embedded systems, the FPUs are often single precision, or we may not have a FPU at all. Note that software-emulated floating-point is a lot slower, so you should see what your system supports, and avoid using something that requires software emulation. In general, our development board provides single precision floating-point processing.
 
 There are a lot of things that we did not mention here. Please refer to this document if you want to learn more: https://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html
+
+### Arrays
+
+We can store the data consecutively along the main memory in a sequence, the sequence is an array. The address of each element in the array would differ by the size of each element. A 2D array with one of the dimension fixed in size can be represented by a normal array, by considering the array as a normal array of large data where each element is an array of fixed size:
+
+```
+1 2 3 4
+5 6 7 8  --> [1 2 3 4] [5 6 7 8] [9 A B C] ...
+9 A B C
+...
+```
+
+Arrays are basically just pointers to the first element of the array. Indexing of an array is just normal pointer addition (note that the address of `a + b` where their types are `T* + int` is `a + sizeof(T)*b`).
 
 ### Alignment & Padding
 
@@ -296,3 +340,4 @@ As we can guess from the above examples, using global variables to share states 
 The answer is no, because of atomicity and memory order. First, memory access has to be atomic to prevent observing some partial updates, like the first half is updated while the second half is not updated. Secondly, the memory ordering has to be correct, as in the relaxed memory model there is no guarantee on the order of the updates between operations, variables updating sequentially can be observed updating in another order in another thread/core, memory barriers are required to enforce the memory ordering. Please refer to C++ memory ordering page for details if you want to learn more. Also, atomic is easy to mess up, so mutexes and other synchronization primitives are recommended instead of using atomics when performance is not that important.
 
 Anyway, volatile is enough for single core case, which is our embedded system. 
+
