@@ -3,7 +3,7 @@
 ## Assignment Submission
 
 1. Duplicate the [PID assignment repository](https://github.com/LIANG-SN/PID-Control-Model) to a new private repository following this [guide](#Duplicate-repository-guide).
-2. Follow the instructions on the assignment repository to set up the environment and read the introductions.
+2. Follow the instructions on the [PID assignment repository](https://github.com/LIANG-SN/PID-Control-Model) to set up the environment and read the introductions.
 3. Implement your code and push it to remote(your private repository)
 4. Set our official account,(Username is `HKUST-Enterprize-RoboMasterTeam`) as collaborator by following [This tutorial](https://help.github.jp/enterprise/2.11/user/articles/inviting-collaborators-to-a-personal-repository/).
 5. You can feel free to push as many times as you want when you make changes.
