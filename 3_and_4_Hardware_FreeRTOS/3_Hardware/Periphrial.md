@@ -9,8 +9,7 @@ I highly recommend you to take a look at the [Materials](#materials) which expla
 
 ## GPIO
 
-### Defination
-General-purpose input/output (GPIO) is a status of input/output (I/O) to, and the name for, an uncommitted digital signal pin on an integrated circuit or electronic circuit board which behavior, including whether it acts as input or output, is controllable by the user at runtime.
+General-purpose input/output (GPIO) is a type of pin found on an integrated circuit that does not have a specific function. While most pins have a dedicated purpose, such as sending a signal to a certain component, the function of a GPIO pin is customizable and can be controlled by software.
 <br><p align="center"><img src="05outputs.png" alt="test image size" height="50%" width="50%"></p><br>
 
 
@@ -18,7 +17,7 @@ General-purpose input/output (GPIO) is a status of input/output (I/O) to, and th
 Push-pull is basically on and off. On the left diagram, if you put 1 in Vin, the Vout will connect to the VDD and give out the signal 1. And if you put 0 in Vin, the Vout will connect to the Ground and give out the signal 0.
 
 ### Open-drain Mode
-Open-drain is a little different from Push-pull. Normally the Vout will also connect to a VCC with a pull-up resistor. If you put 1 in Vin, it will put Vout in floating(neither connect to VCC nor Ground) and give out the signal 1. And if you put 0 in Vin, Vout will connect to the Ground and give out the signal 0.
+Open-drain is a little different from Push-pull. I will explain it in [I2C](#I2C).
 <br><br>
 
 
@@ -43,7 +42,8 @@ We can take a look at the frame of UART. It started when the start condition was
 ## I2C
 The Inter-Integrated Circuit (I2C) Protocol is a protocol intended to allow multiple "slave" digital integrated circuits ("chips") to communicate with one or more "master" chips.
 <br><p align="center"><img src="i2c.jpg" alt="test image size" height="50%" width="50%"></p><br>
-PWM and UART can only be used to connect two devices. I2C can be used to connect multiple devices.Note that SCL(Serial Clock) and SDA(Serial Data) both connect to VDD with pull-up resisters, so the GPIO should use Open-drain mode<br><p align="center"><img src="i2c2.png" alt="test image size" height="50%" width="50%"></p><br>
+PWM and UART can only be used to connect two devices. I2C can be used to connect multiple devices. Note that SCL(Serial Clock) and SDA(Serial Data) are connected to VDD with pull-up resisters, and GPIO should use Open-drain mode. If you put 1, the GPIO will do nothing, and the line remains high, and if you put 0, the GPIO will connect to the ground, and the line will get low. You may ask why we need to use the open drain. If we use push-pull and two masters start to send data simultaneously, all the GPIO will overload.
+<br><p align="center"><img src="i2c2.png" alt="test image size" height="50%" width="50%"></p><br>
 This is the frame of I2C. It also starts with the start condition, then follows up with 8 bits device address and a bit to indicate write or read(For example, read). And the slave device will send an acknowledge bit. Then it will send an internal register address, and the slave will send the data back.
 
 ## CAN
