@@ -5,13 +5,17 @@
 * You are required to design an API and implement it for the control of a simple motor, MG996R
 * To control the motor, you will use pwm to indicate the motor to what angle the motor should turn to a specified angle. 
 * Link for specific control protocol of MG996R: https://components101.com/motors/mg996r-servo-motor-datasheet
-* Your designed code for the motor should:
+* Your designed code for the motor should meet the [requirements](#Requirements)
 
 
-## Requirements and Instructions
-* `git pull` this repository to update it and acquire the generated skeleton code. Then cut and paste the skeleton folder to your own repository and work on it. The skeleton code is where you will write your code
+## Instructions
+* `git clone` this [repository](https://github.com/wlph17/RM-2020-BluePill) to acquire the generated code. 
+* Then cut and paste the whole folder to your own repository(the one you handin your assignments) and work on it.
+* `MG996R.cpp` `MG996R.hpp` `UserTask.cpp` is where you will mainly write your code
+
+## Requirements
 * Your API should be under a namespace like MG996R and have the function `init()` to initialize the timer you need.
-* By doing so, you need to use `MG996R:: init()` to call the initializing function.
+* By doing so, you need to use `MG996R::init()` to call the initializing function.
 * This is a good habit and in fact our convention for managing the API of our driver codes.
 * Then your API should have a function with prototype `void setTargetAngle(uint8_t angle)` that sets the angle for motor
 * Since we are using a specified board, please use (pin name) for the pwm output to control the motor
@@ -40,14 +44,14 @@ namespace MG996R{
 
 
 ## Submission for Students at Hong Kong
-* To test whether your code is functional, come to our lab and upload your code to your development board. 
+* To test whether your code is functional, come to our lab and upload your code to our development board. 
 * You can also write your code in the lab and test your half-complete code whenever there is a free development board.
 * It is very likely that your code does not work on the first time. That's OK. Though software seniors will not directly debug for you, we will give you useful advices for debugging!
-* Full credits will be given for this assignment if you can achieve the requirements above!
+* Full credits will be given for this assignment if you can achieve the [requirements](#requirements) above!
 
 ## Submission for Students Not at Hong Kong
 * Push your work to your own repository that you used for submission of CPP module
 * To see whether your code is functional, contact seniors for a debug and demo session. We will pull your code from your repository and try to run it on our development board. 
 * In the demo session, if a bug occurs(which is very likely), we will debug together with you. But if the debugging takes too much time and another junior comes for online debugging, you will have to leave the meeting and book for another session
-* Like the offline students at HK, you can have full marks if the requirements are met. 
+* Like the offline students at HK, you can have full marks if the [requirements](#requirements) are met. 
 * Of course, we will deduct less points if the requirements are not fully met, since we know it is hard to debug online :( 
