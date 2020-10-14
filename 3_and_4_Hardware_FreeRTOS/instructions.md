@@ -1,50 +1,82 @@
-# Assignment for Module 3 and 4
+# Module 3 & 4 Assignment: A simple motor driver!
+In this assignment, you will develop a __simple driver__ for controlling servo motor (MG996R). Don't worry about the complexity of writing a driver, we simpify a lot of things for you, you just need to implement few functions and be able to run your code! 
+* For instructions on getting the code base, refer to [Code Base](#code-base)
+* For instructions on writing your code, refer to [Implementing your code](#implementing-your-code)
+* For instructions on compiling your code, refer to [Compiling your code](#compiling-your-code)
+* For instructions on running your code, refer to [Running your code](#running-your-code)
+* For hints and reference materials, refer to [Hints & Reference](#hints-and-reference)
+* For submission guideline, refer to [Submission](#submission)
+* For grading scheme, refer to [Grading](#grading)
 
-## Description
-* In this assignment, you will demonstrate your understanding on embedded programming and FreeRTOS
-* You are required to design an API and implement it for the control of a simple motor, MG996R
-* To control the motor, you will use pwm to indicate the motor to what angle the motor should turn to a specified angle. 
-* Link for specific control protocol of MG996R: https://components101.com/motors/mg996r-servo-motor-datasheet
-* Your designed code for the motor should meet the [requirements](#Requirements)
-
-
-## Instructions
+## Code Base
 * `git clone` this [repository](https://github.com/wlph17/RM-2020-BluePill) to acquire the generated code. 
-* Then cut and paste the whole folder to your own repository(the one you handin your assignments) and work on it.
-* `MG996R.cpp` `MG996R.hpp` `UserTask.cpp` is where you will mainly write your code
+* Then cut and paste the whole folder to your own repository (the one you handin your assignments) and work on it.
+* Remember, you only need to modify three files: `MG996R.cpp` `MG996R.hpp` and `UserTask.cpp`.
 
-## Requirements
-* Your API should be under a namespace like MG996R and have the function `init()` to initialize the timer you need.
-* By doing so, you need to use `MG996R::init()` to call the initializing function.
-* This is a good habit and in fact our convention for managing the API of our driver codes.
-* Then your API should have a function with prototype `void setTargetAngle(uint8_t angle)` that sets the angle for motor
-* Since we are using a specified board, please use (pin name) for the pwm output to control the motor
-* Feel free to add any helper functions that you need
-```
-//header file for your dirver code
-namespace MG996R{
-    void init();
-    void setTargetAngle(uint8_t);
-    //other helper functions you need
-}
-```
-* Then, inside the `UserTask.cpp`, where our FreeRTOS tasks are defined and created, write and create a task that can demonstrate your written driver code
-* Since you are working on a multi-threading code, your `UserTasks.cpp` should also define a task that makes an LED to blink once every second, or with a frequency that you prefer. This is to make sure that your driver is thread-safe.
+## Implementing Your Code
+* You only have one goal: Able to control servo motor (i.e. to turn to any commanded angle within the controllable range).
+* You will be using __PWM__ to control the servo motor, so please understand how to call PWM APIs by watching the videos.
+* Implement control functions in `MG996R.cpp`.
+* Call your contol codes in `UserTask.cpp`, this is an analogy of `int main()`.
+* Don't forget you have a namespace `MG996R`, so be careful when calling your functions inside `UserTask.cpp`
+* You __SHOULD ONLY__ modify `MG996R.cpp` and `UserTask.cpp`, nothing else can be changed.
+* You can add any helper functions you like, inside `MG996R.cpp` and `UserTask.cpp`.
+* For instructions on implementing the skeleton functions, please refer to `MG996R.cpp` and `UserTask.cpp`.
 
-## Hints and Supplementary Material for PWM Generation:
+## Compiling Your Code
+To compile your code, there are additional tool chains that you need to install beforehand, detailed instruction is included in the tutorial powerpoint.
+
+* Please refer to the powerpoint here : ()
+* __REMEMBER TO READ THE INSTRUCTIONS CAREFULLY AND THOROUGHLY BEFORE YOU START INSTALLING YOUR TOOLCAHIN FOR COMPILATION!__
+
+## Hints and Reference
+* Link MG996R datasheet and control specification: https://components101.com/motors/mg996r-servo-motor-datasheet
 * Hardware Timer Configuration: https://www.waveshare.com/wiki/STM32CubeMX_Tutorial_Series:_Basic_Timer
 * PWM Generation: https://www.waveshare.com/wiki/STM32CubeMX_Tutorial_Series:_PWM
 * Use `#include "tim.h" ` in your header file or cpp file to include the HAL library files to control timer and generate PWM 
 * `HAL_StatusTypeDef HAL_TIM_PWM_Start(TIM_HandleTypeDef *htim, uint32_t Channel)` initializes the a specified timer channelf or pwm generation
 * `HAL_StatusTypeDef HAL_TIM_PWM_ConfigChannel(TIM_HandleTypeDef *htim, TIM_OC_InitTypeDef *sConfig,uint32_t Channel)` helps you to set the pulse width of your generated pwm signal. `*htim ` is the pointer to the timer handler instance generated by STM32 CUBEMX. `*sConfig` is what defines property of the PWM, check the definition of this struct to see how to use it.
 
-## Environment Setup and Debugger Setup to Compile and Run Your Code
-* Please refer to the powerpoint here : (final link for powerpoint instruction)
-* __REMEMBER TO READ THE INSTRUCTIONS CAREFULLY AND THOROUGHLY BEFORE YOU START INSTALLING YOUR TOOLCAHIN FOR COMPILATION!__
+> Note: you need also go through tutorial modules 3 and 4 to gain sufficient background knowledge first (if you already know everything, as usual, feel free to skip those tutorials).
 
-## Usage of Ozone
+## Running Your Code
+You can not actually run your code in your home (unless you have your own microcontroller and debugger). So you need to come to our lab to use the microcontrollers as well as the debugger, __THIS IS FOR OFFLINE PEOPLE__.
 
-### New Project
+For __ONLINE__ people, we will open up zoom meeting rooms in which we will run your code for you so that you can see how your code performs and fix bugs if needed. For the details about the arrangement, please refer to [Submission](#submission)
+
+### For OFFLINE people, please do the following things:
+* Go to [This website]() to download Ozone.
+* Read [Usage of Ozone](#appendix-usage-of-ozone) at the end of this document to get a sense on what Ozone does and how to use it.
+* Later your will upload and run your code using Ozone when you come to our lab.
+
+## Submission
+### Online (Note: even if you are in HK, you can choose to be online, we are not forcing you to be offline student)
+
+1. Push your code to the same repository that you push your previous assignment.
+2. Notify us if you want to run your code (i.e. request for a test), so that we can download your code and prepare beforehand. __MAKE SURE YOU CAN COMPILE YOUR CODE FIRST__.
+3. Join any zoom session　__FROM THE NEXT DAY__ you requested a test.
+4. We will demonstrate your code running and see if it can actually control a servo motor, __IF YES__, then you are done. __IF NO__, we will give you hint where you did wrong and you need to figure out the bug and fix it (which means you need to request another test later).
+5. Once we confirmed that your code works, you will revieve full mark for this assignment.
+
+> Note: You have __UNLIMITED__ chances to test, but remember there is one day gap between you request a test and you can actually test.
+
+### Offline
+1. Come to our lab and test your code, we will give you debugger and microcontroller as well as servo motor.
+
+> Note: You can even come to our lab to write your code and test any time you want.
+
+2. Demo that your code works to any one of the senior in the lab, once we confirmed that, you will recieve __full marks__.
+3. Push your code to your own repository (same as previous assignment), so that we can look at your implementation (just for reference).
+
+## Grading
+No actual grade for this assignment, its just pass or fail. If you cannot have a driver that controls servo motor before deadline, you will basically fail. 
+
+> Remember, you can always seek help when you are stuck, although we are not going to tell you the answer, we still can give you hint and help with some confusions.
+
+## Appendix Usage of Ozone
+You won't be using this if you are __ONLINE student__. But it will be good if you can go through this as you will eventually be developing offline (before the competition).
+
+### Creating New Project
 1. Open Ozone <br>
 2. ![1569214631749](instructions.assets/1569214631749.png)
 3. ![1569214678860](instructions.assets/1569214678860.png)
@@ -53,19 +85,6 @@ namespace MG996R{
 6. Click the menu the save the project file for later usage:  
     ![1569214781714](instructions.assets/1569214781714.png)
 
-### Old Project
+### Opening Old Project
 
 ![1569215020264](instructions.assets/1569215020264.png)
-
-## Submission for Students at Hong Kong
-* To test whether your code is functional, come to our lab and upload your code to our development board. 
-* You can also write your code in the lab and test your half-complete code whenever there is a free development board.
-* It is very likely that your code does not work on the first time. That's OK. Though software seniors will not directly debug for you, we will give you useful advices for debugging!
-* Full credits will be given for this assignment if you can achieve the [requirements](#requirements) above!
-
-## Submission for Students Not at Hong Kong
-* Push your work to your own repository that you used for submission of CPP module
-* To see whether your code is functional, contact seniors for a debug and demo session. We will pull your code from your repository and try to run it on our development board. 
-* In the demo session, if a bug occurs(which is very likely), we will debug together with you. But if the debugging takes too much time and another junior comes for online debugging, you will have to leave the meeting and book for another session
-* Like the offline students at HK, you can have full marks if the [requirements](#requirements) are met. 
-* Of course, we will deduct less points if the requirements are not fully met, since we know it is hard to debug online :( 
