@@ -11,12 +11,12 @@ In this assignment, you will develop a __simple driver__ for controlling servo m
 ## Code Base
 * `git clone` this [repository](https://github.com/wlph17/RM-2020-BluePill) to acquire the generated code. 
 * Then cut and paste the whole folder to your own repository (the one you handin your assignments) and work on it.
-* Remember, you only need to modify three files: `MG996R.cpp` `MG996R.hpp` and `UserTask.cpp`.
+* Remember, you only need to modify two files: `MG996R.cpp` and `UserTask.cpp`.
 
 ## Implementing Your Code
-* You only have one goal: Able to control servo motor (i.e. to turn to any commanded angle within the controllable range).
-* You will be using __PWM__ to control the servo motor, so please understand how to call PWM APIs by watching the videos.
-* Implement control functions in `MG996R.cpp`.
+* You have only one goal: Able to control servo motor (i.e. to turn to any commanded angle within the controllable range).
+* You will be using __PWM__ to control the servo motor, so please understand how to call PWM APIs by watching the videos. There are hints in `MG996R.cpp` :).
+* Implement control functions, specifically, `void init()` and `void setTargetAngle(int8_t angle)` in `MG996R.cpp`.
 * Call your contol codes in `UserTask.cpp`, this is an analogy of `int main()`.
 * Don't forget you have a namespace `MG996R`, so be careful when calling your functions inside `UserTask.cpp`
 * You __SHOULD ONLY__ modify `MG996R.cpp` and `UserTask.cpp`, nothing else can be changed.
