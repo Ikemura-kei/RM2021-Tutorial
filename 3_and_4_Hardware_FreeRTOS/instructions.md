@@ -42,6 +42,20 @@ namespace MG996R{
 * Please refer to the powerpoint here : (final link for powerpoint instruction)
 * __REMEMBER TO READ THE INSTRUCTIONS CAREFULLY AND THOROUGHLY BEFORE YOU START INSTALLING YOUR TOOLCAHIN FOR COMPILATION!__
 
+## Usage of Ozone
+
+### New Project
+1. Open Ozone <br>
+2. ![1569214631749](instructions.assets/1569214631749.png)
+3. ![1569214678860](instructions.assets/1569214678860.png)
+4. ![1569214709295](instructions.assets/1569214709295.png)
+5. ![1569214753749](instructions.assets/1569214753749.png)
+6. Click the menu the save the project file for later usage:  
+    ![1569214781714](instructions.assets/1569214781714.png)
+
+### Old Project
+
+![1569215020264](instructions.assets/1569215020264.png)
 
 ## Submission for Students at Hong Kong
 * To test whether your code is functional, come to our lab and upload your code to our development board. 
