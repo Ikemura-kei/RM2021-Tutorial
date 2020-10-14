@@ -26,7 +26,7 @@ In this assignment, you will develop a __simple driver__ for controlling servo m
 ## Compiling Your Code
 To compile your code, there are additional tool chains that you need to install beforehand, detailed instruction is included in the tutorial powerpoint.
 
-* Please refer to the powerpoint here : ()
+* Please refer to the tutorial powerpoint in either OneDriver or Google driver.
 * __REMEMBER TO READ THE INSTRUCTIONS CAREFULLY AND THOROUGHLY BEFORE YOU START INSTALLING YOUR TOOLCAHIN FOR COMPILATION!__
 
 ## Hints and Reference
@@ -45,12 +45,13 @@ You can not actually run your code in your home (unless you have your own microc
 For __ONLINE__ people, we will open up zoom meeting rooms in which we will run your code for you so that you can see how your code performs and fix bugs if needed. For the details about the arrangement, please refer to [Submission](#submission)
 
 ### For OFFLINE people, please do the following things:
-* Go to [This website]() to download Ozone.
+* Go to [This website](#https://www.segger.com/downloads/jlink/#Ozone) to download Ozone. Scroll down and download the __J-LInk Software and Documentation Pack__, be careful, __DON'T__ download the beta version.
 * Read [Usage of Ozone](#appendix-usage-of-ozone) at the end of this document to get a sense on what Ozone does and how to use it.
 * Later your will upload and run your code using Ozone when you come to our lab.
 
 ## Submission
-### Online (Note: even if you are in HK, you can choose to be online, we are not forcing you to be offline student)
+### Online 
+> Note: even if you are in HK, you can choose to be online, we are not forcing you to be offline student.
 
 1. Push your code to the same repository that you push your previous assignment.
 2. Notify us if you want to run your code (i.e. request for a test), so that we can download your code and prepare beforehand. __MAKE SURE YOU CAN COMPILE YOUR CODE FIRST__.
