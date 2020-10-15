@@ -17,6 +17,13 @@ In this assignment, you will develop a __simple driver__ for controlling servo m
 * You have only one goal: Able to control servo motor (i.e. to turn to any commanded angle within the controllable range).
 * You will be using __PWM__ to control the servo motor, so please understand how to call HAL PWM APIs by going through the tutorials. (An example of PWM API that you will definitely use: `HAL_TIM_PWM_Start()`, try to find more to achieve your goal).
 
+### Step 0
+* Download `STM32CubeMX` from STM website
+* Open the file `BluePill.ioc` which is in the [repository](https://github.com/wlph17/RM-2020-BluePill) using `STM32CubeMX`
+* Config the timer and the parameters
+* Generate Code
+* You should see the code gernerated and the file `Core/Src/tim.c`
+
 ### Step 1
 * Go to the `WorkSpace` folder of your code base, you'll se `MG996R.cpp` and `MG996R.hpp`
 * Implement control functions, specifically, `void init()` and `void setTargetAngle(int8_t angle)` in `MG996R.cpp`. __DO NOT__ touch anything in `MG996R.hpp`.
