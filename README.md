@@ -1,8 +1,11 @@
 # Welcome to RM2021 Tutorial Assignment Page
 
 ## Modules (Currently):
+### Stage 1:
 * C++ Basics & (Optionally Makefile). DIR: `./1_CPP`
 * Git and Github. DIR: `./2_Git`
+
+### Stage 2:
 * FreeRTOS and hardware. DIR: `./3_and_4_Hardware_FreeRTOS`
 * PID Controller. DIR: `./5_PID`
 ## Cloning
