@@ -27,7 +27,7 @@ In this assignment, you will develop a __simple driver__ for controlling servo m
 * You should see the code gernerated and the file `Core/Src/tim.c`
 
 ### Step 1
-* Go to the `WorkSpace` folder of your code base, you'll se `MG996R.cpp` and `MG996R.hpp`
+* Go to the `WorkSpace` folder of your code base, you'll see `MG996R.cpp` and `MG996R.hpp`
 * Implement control functions, specifically, `void init()` and `void setTargetAngle(int8_t angle)` in `MG996R.cpp`. __DO NOT__ touch anything in `MG996R.hpp`.
 * `void init()` should take care of the initialization, specifically, initializing your __Timer__ for __PWM signal output__.
 * `void setTargetPosition(int8_t angle)` should take an target angle as input and command the servo motor to turn to that specific angle. (Hint: search for HAL PWM APIs to achieve that, also refer to MG996R datasheet in [Hints & Reference](#hints-and-reference), you need certain PWM signal for each angle).
