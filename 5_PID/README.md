@@ -9,9 +9,9 @@ In this assignment, you will use what you have learned in PID tutorials and writ
 * For grading, refer to [Grading](#grading)
 
 ## Instruction
-1. Clone the [PID assignment repository](https://github.com/LIANG-SN/PID-Control-Model) to a new private repository following this [guide](#Duplicate-repository-guide).
-2. Follow the instructions on the [PID assignment repository](https://github.com/LIANG-SN/PID-Control-Model) to set up the environment and read the introductions.
-3. Inside that repository, your goal is: __Modify `PID.py` (ONLY) and impelement INTEGRAL term and DIFFERENTIAL term of a PID controller.
+1. Clone the [PID assignment repository](https://github.com/LIANG-SN/PID-Control-Model) to your local.
+2. Follow the instructions on the [PID assignment repository](https://github.com/LIANG-SN/PID-Control-Model) to set up the environment (dependencies).
+3. Inside that repository, you will see several python scripts. Your goal is: __Modify `PID.py` (ONLY) and impelement INTEGRAL term and DIFFERENTIAL term of a PID controller.
 4. More specifically, you only need to modify the function `update(self, setPoint, actualValue, lastActualValue)`, ignore the `self` parameter if you don't know what it means (is analogous to `this` in C++). Note that __PROPORTIONAL term__ is already implemented.
 5. After you finished implementing the function, run `python ./plot.py` OR `python3 ./plot.py` to run the simulator, you can play with it to see how your implementation performs.
 6. Ask us if you have any confusion that want us to clear out for you.
