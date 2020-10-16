@@ -1,66 +1,27 @@
 # PID Module
 
+In this assignment, you will use what you have learned in PID tutorials and write an actual PID module inside the skeleton simulator we have provided. Note that this assignment will be conducted with __Python__. The reason is Python provides better and easier plot library and it is generally a good language for data visualization. __Note that python skills are almost not required, we only need you to write few equations, and that is basically same as what you would do in C++__. 
+
+> You don't have to study python for this assignment since you are only going to implement a few equations and arithmetic calculations.
+
+* For instruction on the assignment, refer to [Instruction](#instruction)
+* For submission, refer to [Assignment Submission](#assignment-submission)
+* For grading, refer to [Grading](#grading)
+
+## Instruction
+1. Clone the [PID assignment repository](https://github.com/LIANG-SN/PID-Control-Model) to a new private repository following this [guide](#Duplicate-repository-guide).
+2. Follow the instructions on the [PID assignment repository](https://github.com/LIANG-SN/PID-Control-Model) to set up the environment and read the introductions.
+3. Inside that repository, your goal is: __Modify `PID.py` (ONLY) and impelement INTEGRAL term and DIFFERENTIAL term of a PID controller.
+4. More specifically, you only need to modify the function `update(self, setPoint, actualValue, lastActualValue)`, ignore the `self` parameter if you don't know what it means (is analogous to `this` in C++). Note that __PROPORTIONAL term__ is already implemented.
+5. After you finished implementing the function, run `python ./plot.py` OR `python3 ./plot.py` to run the simulator, you can play with it to see how your implementation performs.
+6. Ask us if you have any confusion that want us to clear out for you.
+
 ## Assignment Submission
 
-1. Duplicate the [PID assignment repository](https://github.com/LIANG-SN/PID-Control-Model) to a new private repository following this [guide](#Duplicate-repository-guide).
-2. Follow the instructions on the [PID assignment repository](https://github.com/LIANG-SN/PID-Control-Model) to set up the environment and read the introductions.
-3. Implement your code and push it to remote(your private repository)
-4. Set our official account,(Username is `HKUST-Enterprize-RoboMasterTeam`) as collaborator by following [This tutorial](https://help.github.jp/enterprise/2.11/user/articles/inviting-collaborators-to-a-personal-repository/).
-5. You can feel free to push as many times as you want when you make changes.
+* As usual, push your code to your private repo. (First create a directory named `5_PID`)
+* Please make sure your code can run without any error. (you can have bugs/incorrect implementation, but at least your code should be runnable)
 
-## Duplicate repository guide
+## Grading
 
-The repository for the assignment is public and Github does not allow the creation of private forks for public repositories, so you need to follow this instruction to duplicate a private one.
-
-The correct way of creating a private frok by duplicating the repo is documented [here](https://docs.github.com/en/free-pro-team@latest/github/creating-cloning-and-archiving-repositories/duplicating-a-repository).
-
-For this assignment the commands are:
-
-1. Create a bare clone of the repository.(This is temporary and will be removed so just do it wherever.)
-
-    ```bash
-    git clone --bare git@github.com:LIANG-SN/PID-Control-Model.git
-    ```
-
-2. [Create a new private repository on Github](https://help.github.com/articles/creating-a-new-repository/) and name it `PID-Control-Model`.
-
-3. Mirror-push your bare clone to your new `PID-Control-Model` repository.
-    > Replace `<your_username>` with your actual Github username in the url below.
-
-    ```bash
-    cd PID-Control-Model    # move into your local repository
-    git push --mirror git@github.com:<your_username>/PID-Control-Model.git    # mirror push to remote
-    ```
-
-4. Remove the temporary local repository you created in step 1.
-
-    ```bash
-    # move out and remove the temporary directory
-    cd ..
-    rm -rf PID-Control-Model
-    ```
-
-5. You can now clone your duplicated `PID-Control-Model` repository on your machine
-
-    ```bash
-    git clone git@github.com:<your_username>/PID-Control-Model.git
-    ```
-
-6. If you want, add the original repo as remote to fetch (potential) future changes.
-    Make sure you also disable push on the remote (as you are not allowed to push to it).
-
-    ```bash
-    git remote add upstream git@github.com:LIANG-SN/PID-Control-Model.git
-    git remote set-url --push upstream DISABLE
-    ```
-
-    You can list all your remotes with `git remote -v`. You should see:
-
-    ```bash
-    origin  git@github.com:<your_username>/PID-Control-Model.git (fetch)
-    origin  git@github.com:<your_username>/PID-Control-Model.git (push)
-    upstream    git@github.com:LIANG-SN/PID-Control-Model.git (fetch)
-    upstream    DISABLE (push)
-    ```
-
-    > When you push, do so on `origin` with `git push origin`.
+* Has implemented __INTEGRATION term and DIFFERENTIAL__ term and your code is runnable. (50%)
+* Your implementation is correct. (50%)
