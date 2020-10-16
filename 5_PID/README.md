@@ -23,5 +23,5 @@ In this assignment, you will use what you have learned in PID tutorials and writ
 
 ## Grading
 
-* Has implemented __INTEGRATION term and DIFFERENTIAL__ term and your code is runnable. (50%)
+* Has implemented __INTEGRATION term and DIFFERENTIAL term__ and your code is runnable. (50%)
 * Your implementation is correct. (50%)
