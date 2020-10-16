@@ -21,7 +21,7 @@ In this assignment, you will develop a __simple driver__ for controlling servo m
 * Download `STM32CubeMX` from STM website
 * Open the file `BluePill.ioc` which is in the [repository](https://github.com/wlph17/RM-2020-BluePill) using `STM32CubeMX`
 * Config the timer and the parameters
-* Generate Code
+* Generate Code (This should be taught in video: `Software_Tutorial_GeneratingCode.mp4` under `Module4_microcontrollers` on either Google driver or OneDriver).
 * You should see the code gernerated and the file `Core/Src/tim.c`
 
 ### Step 1
@@ -43,7 +43,7 @@ In this assignment, you will develop a __simple driver__ for controlling servo m
 ## Compiling Your Code
 To compile your code, there are additional tool chains that you need to install beforehand, detailed instruction is included in the tutorial powerpoint.
 
-* Please refer to the tutorial powerpoint in either OneDriver or Google driver pdf name: `setup_embedded_env`.
+* Please refer to the tutorial powerpoint in either OneDriver or Google driver. pdf name: `setup_embedded_env` under `Module4_microcontrollers`.
 * __REMEMBER TO READ THE INSTRUCTIONS CAREFULLY AND THOROUGHLY BEFORE YOU START INSTALLING YOUR TOOLCAHIN FOR COMPILATION!__
 
 ## Hints and Reference
