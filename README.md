@@ -3,8 +3,8 @@
 ## Modules (Currently):
 * C++ Basics & (Optionally Makefile). DIR: `./1_CPP`
 * Git and Github. DIR: `./2_Git`
-* FreeRTOS and hardware. DIR: `./3_and_4_Hardware_FreeRTOS` [Available on Oct. 14th 23:59 exatcly]
-* PID Controller. DIR: `./5_PID` [Available on Oct. 14th 23:59 exatcly]
+* FreeRTOS and hardware. DIR: `./3_and_4_Hardware_FreeRTOS`
+* PID Controller. DIR: `./5_PID`
 ## Cloning
 You can clone this repo (after setting up git correctly) by:
 * `git clone https://github.com/Ikemura-kei/RM2021-Tutorial.git` OR
