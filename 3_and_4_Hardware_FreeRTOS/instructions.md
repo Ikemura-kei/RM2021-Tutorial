@@ -1,5 +1,5 @@
 # Module 3 & 4 Assignment: A simple motor driver!
-This assignment combining two tutorial modules together: Microcontrollers series and FreeRTOS series.   
+This assignment is combining two tutorial modules together: Microcontrollers series and FreeRTOS series.   
 
 In this assignment, you will develop a __simple driver__ for controlling servo motor (MG996R). Don't worry about the complexity of writing a driver, we simpify a lot of things for you, you just need to implement few functions and be able to run your code! 
 * For instructions on getting the code base, refer to [Code Base](#code-base)
@@ -71,7 +71,7 @@ For __ONLINE__ people, we will open up zoom meeting rooms in which we will run y
 ### Online 
 > Note: even if you are in HK, you can choose to be online, we are not forcing you to be offline student.
 
-1. Push your code to the same repository that you have pushed your previous assignment to.
+1. Push your code to the same repository that you have pushed your previous assignment to (Create a directory called `3&4_microcontroller_FreeRTOS`).
 2. Notify us if you want to run your code (i.e. request for a test), so that we can download your code and prepare beforehand. __MAKE SURE YOU CAN COMPILE YOUR CODE FIRST__.
 3. Join any zoom session starting __FROM THE NEXT DAY__ you requested a test. The time-slot for [zoom sessions](#online-test-session) are at the bottom most of this document
 4. We will demonstrate your code running and see if it can actually control a servo motor, __IF YES__, then you are done. __IF NO__, we will give you hint where you did wrong and you need to figure out the bug and fix it (which means you need to request another test later).
@@ -85,7 +85,7 @@ For __ONLINE__ people, we will open up zoom meeting rooms in which we will run y
 > Note: You can even come to our lab to write your code and test any time you want.
 
 2. Demo that your code works to any one of the senior in the lab, once we confirmed that, you will recieve __full marks__.
-3. Push your code to your own repository (same as previous assignment), so that we can look at your implementation (just for reference).
+3. Push your code to your own repository (same as previous assignment), so that we can look at your implementation (just for reference). (Create a directory called `3&4_microcontroller_FreeRTOS`).
 
 > Update: We are probably going to move our lab to another location around Oct.27, by then you have a short period of time that you are not able to come. Exact date will be announced later. __CURRENTLY, YOU ARE FREE TO COME AT LEAST BEFORE OCT.25__.
 
