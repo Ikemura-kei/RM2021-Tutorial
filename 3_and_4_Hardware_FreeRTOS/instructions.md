@@ -43,7 +43,7 @@ In this assignment, you will develop a __simple driver__ for controlling servo m
 ## Compiling Your Code
 To compile your code, there are additional tool chains that you need to install beforehand, detailed instruction is included in the tutorial powerpoint.
 
-* Please refer to the tutorial powerpoint in either OneDriver or Google driver `setup_embedded_env`.
+* Please refer to the tutorial powerpoint in either OneDriver or Google driver pdf name: `setup_embedded_env`.
 * __REMEMBER TO READ THE INSTRUCTIONS CAREFULLY AND THOROUGHLY BEFORE YOU START INSTALLING YOUR TOOLCAHIN FOR COMPILATION!__
 
 ## Hints and Reference
